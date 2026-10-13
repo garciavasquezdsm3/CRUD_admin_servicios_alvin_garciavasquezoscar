@@ -1,14 +1,12 @@
-# path: función para definir una ruta individual
+# path: función para declarar una ruta URL y a qué vista apunta
 from django.urls import path
-# views: el archivo que acabás de escribir, en la misma carpeta
+# views: el módulo con todas las funciones-vista de esta app
 from . import views
 
-# urlpatterns: lista de rutas que esta app entiende
 urlpatterns = [
-    # '': la URL vacía (la raíz de esta app) · views.inicio: la función que la atiende
-    # name='inicio': un alias interno para referirse a esta ruta sin escribir la URL a mano
     path('', views.inicio, name='inicio'),
-
-    # nueva ruta 'servicios/' → función views.servicios → alias 'servicios'
     path('servicios/', views.servicios, name='servicios'),
+    path('servicios/nuevo/', views.crear_servicio, name='crear_servicio'),
+    path('servicios/<int:pk>/editar/', views.editar_servicio, name='editar_servicio'),
+    path('servicios/<int:pk>/eliminar/', views.eliminar_servicio, name='eliminar_servicio'),
 ]
